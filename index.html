@@ -295,10 +295,6 @@
             <div class="step-circle">2</div>
             <div class="step-label">Customer interview</div>
           </li>
-          <li data-step="3">
-            <div class="step-circle">3</div>
-            <div class="step-label">Customer interview validation</div>
-          </li>
         </ol>
       </div>
       <div class="pega-card">
@@ -307,7 +303,7 @@
           id='theEmbed'
           action='openAssignment'
           assignmentID=''
-          themeID='Credera'
+          themeID='pzCygnus'
           casePage='assignment'
           appAlias='sd'
           pegaServerUrl='https://areteans02.pegalabs.io/prweb/'
@@ -513,8 +509,7 @@
     <script>
       const stepKeywords = [
         { step: 1, patterns: ["collect supplemental", "supplemental information", "supplemental"] },
-        { step: 2, patterns: ["customer interview"] },
-        { step: 3, patterns: ["customer interview validation", "interview validation", "validation"] },
+        { step: 2, patterns: ["customer interview validation", "interview validation", "customer interview"] },
       ];
 
       let lastDetectedStep = 0;
@@ -581,7 +576,7 @@
         var bodyText = embed.shadowRoot.textContent || "";
         if (!/open\s*tasks/i.test(bodyText)) return;
 
-        if (lastDetectedStep >= 3) {
+        if (lastDetectedStep >= 2) {
           showThankYou();
           return;
         }
@@ -623,7 +618,7 @@
         autoClickGo();
         var detected = detectStepFromHeading(embed.shadowRoot);
         updateStepper(detected);
-        if (lastDetectedStep >= 3 && detected === 0) {
+        if (lastDetectedStep >= 2 && detected === 0) {
           showThankYou();
         }
       }
